@@ -1,0 +1,1628 @@
+@mixin idashbutton ($color) {
+  @include button(simple, $color);
+  @extend .button-reset;
+
+  margin-bottom: 1em;
+  padding: 8px 17px 8px 17px;
+  font-size: em(13);
+  line-height: 1.3em;
+
+  .icon {
+    margin-right: ($baseline/5);
+  }
+}
+
+.instructor-dashboard-wrapper-2 {
+  position: relative;
+  // display: table;
+
+  .olddash-button-wrapper {
+    position: absolute;
+    top: 16px;
+    right: 15px;
+    @include font-size(16);
+  }
+
+  .studio-edit-link{
+    position: absolute;
+    top: 40px;
+    right: 15px;
+    @include font-size(16);
+  }
+
+  .file-download-link a {
+    font-size: 15px;
+    color: $link-color;
+    text-decoration: underline;
+    padding: 5px;
+  }
+
+  // system feedback - messages
+  .wrapper-msg {
+    margin-bottom: ($baseline*1.5);
+  }
+
+  .msg {
+    border-radius: 1px;
+    padding: $baseline/2 $baseline*0.75;
+    margin-bottom: $baseline;
+    font-weight: 600;
+
+    .copy {
+      font-weight: 600;
+    }
+  }
+
+  // TYPE: warning
+  .msg-warning {
+    border-top: 2px solid $warning-color;
+    background: tint($warning-color,95%);
+    display: none;
+    color: $warning-color;
+  }
+
+  // TYPE: confirm
+  .msg-confirm {
+    border-top: 2px solid $confirm-color;
+    background: tint($confirm-color,95%);
+    display: none;
+    color: $confirm-color;
+  }
+
+  // TYPE: confirm
+  .msg-error {
+    border-top: 2px solid $error-color;
+    background: tint($error-color,95%);
+
+    .copy {
+      color: $error-color;
+    }
+  }
+
+  // inline copy
+  .copy-confirm {
+    color: $confirm-color;
+  }
+
+  .copy-warning {
+    color: $warning-color;
+  }
+
+  .copy-error {
+    color: $error-color;
+  }
+
+  .list-advice {
+    list-style: none;
+    padding: 0;
+    margin: $baseline 0;
+
+    .item {
+      font-weight: 600;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// instructor dashboard 2
+// ====================
+section.instructor-dashboard-content-2 {
+  @extend .content;
+  // position: relative;
+  padding: 40px;
+  width: 100%;
+
+  // .has-event-handler-for-click {
+  //   border: 1px solid blue;
+  // }
+
+  .wrap-instructor-info {
+    display: inline;
+    top: 0;
+  }
+
+  .request-response-error {
+    margin: 0;
+    padding-bottom: ($baseline);
+    color: $error-red;
+  }
+
+  .display-errors {
+    line-height: 3em;
+    color: $error-red;
+  }
+
+  .slickgrid {
+    margin-left: 1px;
+    color:#333333;
+    font-size:12px;
+    font-family: verdana,arial,sans-serif;
+
+    .slick-header-column {
+      // height: 100%
+    }
+
+    .slick-cell {
+      border: 1px dotted silver;
+      border-collapse: collapse;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+  }
+
+  h1 {
+    @extend .top-header;
+    display: inline-block;
+    padding-bottom: 0;
+    border-bottom: 0;
+    margin-bottom: ($baseline*.75);
+  }
+
+  input[type="button"] {
+    @include idashbutton(#eee);
+
+    &.molly-guard {
+      // @include idashbutton($danger-red);
+      // @include idashbutton($black);
+      // border: 2px solid $danger-red;
+    }
+  }
+
+  .instructor_dash_glob_info {
+    position: absolute;
+    top: 46px;
+    right: 50px;
+    text-align: right;
+  }
+
+  .instructor-nav {
+    @extend %ui-no-list;
+    border-top: 1px solid $gray-l3;
+    border-bottom: 1px solid $gray-l3;
+
+    .nav-item {
+      @extend %t-copy-base;
+      display: inline-block;
+      margin: ($baseline/2) $baseline;
+
+      a {
+        display: block;
+        text-transform: uppercase;
+
+        &.active-section {
+          color: $black;
+        }
+      }
+    }
+  }
+}
+
+// elements - general
+// --------------------
+.idash-section {
+
+  // messages
+  .message {
+    margin-bottom: $baseline;
+    display: block;
+    border-radius: 1px;
+    padding: ($baseline*0.75) $baseline;
+  }
+
+  .message-title {
+    @extend %t-title6;
+    @extend %t-weight4;
+    margin-bottom: ($baseline/4);
+  }
+
+  .message-copy {
+    @extend %t-copy-sub1;
+  }
+
+  .message-actions {
+    margin-top: ($baseline/2);
+
+    .action-primary {
+      @include idashbutton($gray-l4);
+    }
+  }
+
+  // type - error
+  .message-error {
+    border-top: 2px solid $error-color;
+    background: tint($error-color,95%);
+
+    .message-title {
+      color: $error-color;
+    }
+
+    .message-copy {
+      color: $base-font-color;
+    }
+  }
+
+  // type - confirmation
+  .message-confirmation {
+    border-top: 2px solid $confirm-color;
+    background: tint($confirm-color,95%);
+
+    .message-title {
+      color: $confirm-color;
+    }
+
+    .message-copy {
+      color: $base-font-color;
+    }
+  }
+
+  // type - error
+  .message-warning {
+    border-top: 2px solid $warning-color;
+    background: tint($warning-color,95%);
+  }
+
+  // grandfathered
+  display: none;
+  margin-top: ($baseline*1.5);
+
+  &.active-section {
+    display: block;
+  }
+
+  .basic-data {
+    padding: 6px;
+  }
+
+  .running-tasks-section {
+    display: none;
+  }
+
+  .no-pending-tasks-message {
+    display: none;
+
+    p {
+      color: #a2a2a2;
+      font-style: italic;
+    }
+  }
+
+  .section-title {
+    @include clearfix();
+    margin-bottom: ($baseline/2);
+
+    .value {
+      float: left;
+    }
+
+    .description {
+      @extend %t-title7;
+      float: right;
+      text-transform: none;
+      letter-spacing: 0;
+      text-align: right;
+      color: $gray;
+    }
+  }
+}
+
+
+// view - course info
+// --------------------
+.instructor-dashboard-wrapper-2 section.idash-section#course_info {
+  .course-errors-wrapper {
+    margin-top: 2em;
+
+    h2 {
+      color: #D60000;
+    }
+
+    &.open {
+      .toggle-wrapper {
+        .triangle {
+          background-image: url('/static/images/bullet-open.png');
+        }
+      }
+      .course-errors-visibility-wrapper {
+        display: block;
+      }
+    }
+
+    .toggle-wrapper {
+      width: 300px;
+      cursor: pointer;
+      div {
+        float:left;
+      }
+
+      h2 {
+        float: left;
+      }
+
+      .triangle {
+        float: left;
+        width: 20px;
+        height: 20px;
+        background-image: url('/static/images/bullet-closed.png');
+        background-position: 8px 6px;
+        background-repeat: no-repeat;
+      }
+    }
+
+    .course-errors-visibility-wrapper {
+      display: none;
+      clear: both;
+
+      .course-error {
+        margin-bottom: 1em;
+        margin-left: 0.5em;
+
+        code {
+          &.course-error-first {
+            color: #111;
+          }
+
+          &.course-error-second {
+            color: #111;
+          }
+        }
+      }
+    }
+  }
+}
+
+// view - bulk email
+// --------------------
+.instructor-dashboard-wrapper-2 section.idash-section#send_email {
+  // form fields
+  .list-fields {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .field {
+      margin-bottom: $baseline;
+      padding: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .tip {
+        display: block;
+        margin-top: ($baseline/4);
+        color: tint(rgb(127,127,127),50%);
+        @include font-size(12);
+      }
+    }
+  }
+}
+
+// view - membership
+// --------------------
+.instructor-dashboard-wrapper-2 section.idash-section#membership {
+
+  .membership-section {
+    margin-bottom: ($baseline*1.5);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // cohort management
+  %cohort-management-form {
+
+    .form-fields {
+
+      .label, .input, .tip {
+        display: block;
+      }
+
+      .label {
+        @extend %t-title7;
+        @extend %t-weight4;
+        margin-bottom: ($baseline/2);
+      }
+
+      .tip {
+        @extend %t-copy-sub1;
+        margin-top: ($baseline/4);
+        color: $gray-l3;
+      }
+
+      .field-text {
+
+        // needed to reset poor input styling
+        input[type="text"] {
+          height: auto;
+        }
+
+        .input {
+          width: 100%;
+          padding: ($baseline/2) ($baseline*0.75);
+        }
+      }
+    }
+
+    .form-submit, .form-cancel {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .form-submit {
+      @include idashbutton($blue);
+      @include font-size(14);
+      @include line-height(14);
+      margin-right: ($baseline/2);
+      margin-bottom: 0;
+      text-shadow: none;
+    }
+
+    .form-cancel {
+      @extend %t-copy-sub1;
+    }
+  }
+
+  .cohort-management-nav {
+    @include clearfix();
+    margin-bottom: $baseline;
+
+    .cohort-management-nav-form {
+      width: 60%;
+      float: left;
+    }
+
+    .cohort-select {
+      width: 100%;
+      margin-top: ($baseline/4);
+    }
+
+    .action-create {
+      @include idashbutton($blue);
+      float: right;
+      text-align: right;
+      text-shadow: none;
+      font-weight: 600;
+    }
+
+    // STATE: is disabled
+    &.is-disabled {
+
+
+      .cohort-select {
+        opacity: 0.25;
+      }
+
+      .action-create {
+        opacity: 0.50;
+      }
+    }
+  }
+
+  .cohort-management {
+
+    // specific message actions
+    .message .action-create {
+      @include idashbutton($blue);
+    }
+  }
+
+  // create or edit cohort group
+  .cohort-management-create, .cohort-management-edit {
+    @extend %cohort-management-form;
+    border: 1px solid $gray-l5;
+    margin-bottom: $baseline;
+
+    .form-title {
+      @extend %t-title5;
+      @extend %t-weight4;
+      border-bottom: ($baseline/10) solid $gray-l4;
+      background: $gray-l5;
+      padding: $baseline;
+    }
+
+    .form-fields {
+      padding: $baseline;
+    }
+
+    .form-actions {
+      padding: 0 $baseline $baseline $baseline;
+    }
+  }
+
+  // cohort group
+  .cohort-management-group {
+    border: 1px solid $gray-l5;
+  }
+
+  .cohort-management-group-header {
+    border-bottom: ($baseline/10) solid $gray-l4;
+    background: $gray-l5;
+    padding: $baseline;
+
+    .group-header-title {
+      margin-bottom: ($baseline/2);
+      border-bottom: 1px solid $gray-l4;
+      padding-bottom: ($baseline/2);
+
+      &:hover, &:active, &:focus {
+
+        .action-edit-name {
+          opacity: 1.0;
+          pointer-events: auto;
+        }
+      }
+    }
+
+    .title-value, .group-count, .action-edit {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .title-value {
+      @extend %t-title5;
+      @extend %t-weight4;
+      margin-right: ($baseline/4);
+    }
+
+    .group-count {
+      @extend %t-title7;
+      @extend %t-weight4;
+    }
+
+    .action-edit-name {
+      @include idashbutton($gray-l3);
+      @include transition(opacity 0.25s ease-in-out);
+      @include font-size(14);
+      @include line-height(14);
+      margin-left: ($baseline/2);
+      margin-bottom: 0;
+      opacity: 0.0;
+      pointer-events: none;
+      padding: ($baseline/4) ($baseline/2);
+    }
+  }
+
+  .cohort-management-group-setup {
+    @include clearfix();
+    @extend %t-copy-sub1;
+    color: $gray-l2;
+
+    .setup-value {
+      float: left;
+      width: 70%;
+      margin-right: 5%;
+    }
+
+    .setup-actions {
+      float: right;
+      width: 20%;
+      text-align: right;
+    }
+  }
+
+  .cohort-management-group-add {
+    @extend %cohort-management-form;
+    padding: $baseline $baseline 0 $baseline;
+
+    .message-title {
+      @extend %t-title7;
+    }
+
+    .form-title {
+      @extend %t-title6;
+      @extend %t-weight4;
+      margin-bottom: ($baseline/4);
+    }
+
+    .form-introduction {
+      @extend %t-copy-sub1;
+      margin-bottom: $baseline;
+
+      p {
+        color: $gray-l1;
+      }
+    }
+
+    .form-fields {
+      padding: $baseline 0;
+    }
+
+    .form-actions {
+      padding: 0 0 $baseline 0;
+    }
+
+    .cohort-management-group-add-students {
+      min-height: ($baseline*10);
+      width: 100%;
+      padding: ($baseline/2) ($baseline*0.75);
+    }
+  }
+
+
+  .cohort-management-supplemental {
+    @extend %t-copy-sub1;
+    margin-top: ($baseline/2);
+
+    .icon {
+      margin-right: ($baseline/4);
+      color: $gray-l1;
+    }
+  }
+
+
+
+  .batch-enrollment, .batch-beta-testers {
+    textarea {
+      margin-top: 0.2em;
+      height: auto;
+      width: 90%;
+    }
+
+    input {
+      margin-right: 5px;
+    }
+
+    .request-res-section {
+      margin-top: 1.5em;
+
+      h3 {
+        color: #646464;
+      }
+
+      ul {
+        margin: 0;
+        margin-top: 0.5em;
+        padding: 0;
+        list-style-type: none;
+        line-height: 1.5em;
+        li {
+        }
+      }
+    }
+  }
+
+  .enroll-option {
+    margin: ($baseline/2) 0;
+    position: relative;
+
+      label {
+        border-bottom: 1px dotted $base-font-color;
+      }
+
+    .hint {
+      @extend %t-copy-sub2;
+      display: none;
+      position: absolute;
+      top: 15px;
+      right: 0;
+      padding: ($baseline/2);
+      width: 50%;
+      background-color: $light-gray;
+      box-shadow: 2px 2px 3px $shadow;
+
+      .hint-caret {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -15px;
+        border-top: 8px solid $light-gray;
+        border-right: 8px solid $light-gray;
+        border-bottom: 8px solid transparent;
+        border-left: 8px solid transparent;
+      }
+    }
+  }
+
+  label[for="auto-enroll"]:hover + .auto-enroll-hint {
+    display: block;
+  }
+
+  label[for="auto-enroll-beta"]:hover + .auto-enroll-beta-hint {
+    width: 30%;
+    display: block;
+  }
+
+
+  label[for="email-students"]:hover + .email-students-hint {
+    display: block;
+  }
+
+  label[for="email-students-beta"]:hover + .email-students-beta-hint {
+    width: 30%;
+    display: block;
+  }
+
+  .enroll-actions {
+    margin-top: $baseline;
+  }
+
+  .member-lists-management {
+
+    .wrapper-member-select {
+      background-color: $light-gray;
+      padding: ($baseline/2);
+    }
+
+    .member-lists-selector {
+      display: block;
+      margin: ($baseline/4) 0;
+      padding: ($baseline/4);
+    }
+
+    .auth-list-container {
+      display: none;
+      margin-bottom: ($baseline*1.5);
+
+      &.active {
+        display: block;
+      }
+
+      .member-list-widget {
+
+        .header {
+          @include box-sizing(border-box);
+          @include border-top-radius(3);
+          position: relative;
+          padding: ($baseline/2);
+          background-color: #efefef;
+          border: 1px solid $light-gray;
+          display: none; // hiding to prefer dropdown as header
+        }
+
+        .title {
+          @include font-size(16);
+        }
+
+        .label {
+          @extend %t-copy-sub1;
+          color: $lighter-base-font-color;
+        }
+
+        .info {
+          @include box-sizing(border-box);
+          padding: ($baseline/2);
+          border: 1px solid $light-gray;
+          color: $lighter-base-font-color;
+          line-height: 1.3em;
+          font-size: .85em;
+        }
+
+        .member-list {
+          @include box-sizing(border-box);
+
+          table {
+            width: 100%;
+          }
+
+          thead {
+            background-color: $light-gray;
+          }
+
+          tr {
+            border-bottom: 1px solid $light-gray;
+          }
+
+          td {
+            @extend %t-copy-sub1;
+            vertical-align: middle;
+            word-wrap: break-word;
+            padding: ($baseline/2) ($baseline/4);
+            border-left:  1px solid $light-gray;
+            border-right: 1px solid $light-gray;
+          }
+        }
+
+        .bottom-bar {
+          @include box-sizing(border-box);
+          @include border-bottom-radius(3);
+          position: relative;
+          padding: ($baseline/2);
+          margin-top: -1px;
+          border: 1px solid $light-gray;
+          background-color: #efefef;
+          box-shadow: inset #bbb 0px 1px 1px 0px;
+        }
+
+        // .add-field
+
+        input[type="button"].add {
+          @include idashbutton($blue);
+          position: absolute;
+          @include right($baseline);
+        }
+      }
+
+      .revoke {
+        color: $lighter-base-font-color;
+        cursor: pointer;
+
+        &:hover, &:focus {
+          color: $alert-color;
+        }
+      }
+    }
+  }
+}
+
+// view - student admin
+// --------------------
+.instructor-dashboard-wrapper-2 section.idash-section#student_admin > {
+  .action-type-container{
+    margin-bottom: $baseline * 2;
+  }
+
+  .progress-link-wrapper {
+    margin-top: 0.7em;
+  }
+
+  // .task-history-single-table { .slickgrid
+  //   max-height: 500px;
+  // } }
+
+  // .running-tasks-table { .slickgrid {
+  //   max-height: 500px;
+  // } }
+
+  .task-history-all-table    {
+    margin-top: 1em;
+    // height: 300px;
+    // overflow-y: scroll
+  }
+  .task-history-single-table {
+    margin-top: 1em;
+    // height: 300px;
+    // overflow-y: scroll
+  }
+  .running-tasks-table {
+    margin-top: 1em;
+    // height: 500px;
+    // overflow-y: scroll
+  }
+}
+
+// view - data download
+// --------------------
+.instructor-dashboard-wrapper-2 section.idash-section#data_download {
+  input {
+    // display: block;
+    margin-bottom: 1em;
+    line-height: 1.3em;
+  }
+
+  .reports-download-container {
+    .data-display-table {
+      .slickgrid {
+        height: 400px;
+      }
+    }
+    .report-downloads-table {
+      .slickgrid {
+        height: 300px;
+        padding: 5px;
+      }
+      // Disable horizontal scroll bar when grid only has 1 column. Remove this CSS class when more columns added.
+      .slick-viewport {
+        overflow-x: hidden !important;
+      }
+    }
+  }
+}
+
+// view - metrics
+// --------------------
+.instructor-dashboard-wrapper-2 section.idash-section#metrics {
+
+  .metrics-container, .metrics-header-container {
+    position: relative;
+    width: 100%;
+    float: left;
+    clear: both;
+    margin-top: 25px;
+
+    .metrics-left, .metrics-left-header {
+      position: relative;
+      width: 30%;
+      float: left;
+      margin-right: 2.5%;
+
+      svg {
+        width: 100%;
+      }
+    }
+    .metrics-section.metrics-left {
+    	height: 640px;
+    }
+
+    .metrics-right, .metrics-right-header {
+      position: relative;
+      width: 65%;
+      float: left;
+      margin-left: 2.5%;
+      margin-bottom: 25px;
+
+      svg {
+        width: 100%;
+      }
+    }
+
+    .metrics-section.metrics-right {
+    	height: 295px;
+    }
+
+    svg {
+      .stacked-bar {
+        cursor: pointer;
+      }
+    }
+
+    .metrics-tooltip {
+      width: 250px;
+      background-color: lightgray;
+      padding: 3px;
+    }
+
+    .metrics-overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(255,255,255, .75);
+      display: none;
+
+      .metrics-overlay-content-wrapper {
+        position: relative;
+        display: block;
+        height: 475px;
+        width: 85%;
+        margin: 5%;
+        background-color: #fff;
+        border: 1px solid #000;
+        border-radius: 25px;
+        padding: 2.5%;
+
+        .metrics-overlay-title {
+          display: block;
+          height: 50px;
+          margin-bottom: 10px;
+          font-weight: bold;
+        }
+
+        .metrics-overlay-content {
+          width: 100%;
+          height: 370px;
+          overflow: auto;
+          border: 1px solid #000;
+
+          table {
+            width: 100%;
+
+            .header {
+              background-color: #ddd;
+            }
+            th, td {
+              padding: 10px;
+            }
+          }
+        }
+
+        .overflow-message {
+          padding-top: 20px;
+        }
+
+        .download-csv {
+          position: absolute;
+          display: none;
+          right: 2%;
+          bottom: 2%;
+        }
+
+        .close-button {
+          position: absolute;
+          right: 1.5%;
+          top: 2%;
+          font-size: 2em;
+        }
+      }
+    }
+
+    .stacked-bar-graph-legend {
+      fill: white;
+    }
+
+    p.loading {
+      padding-top: 100px;
+      text-align: center;
+    }
+
+    p.nothing {
+      padding-top: 25px;
+    }
+
+    h3.attention {
+      padding: 10px;
+      border: 1px solid #999;
+      border-radius: 5px;
+      margin-top: 25px;
+    }
+  }
+}
+
+
+.profile-distribution-widget {
+  margin-bottom: $baseline * 2;
+
+  .display-text {}
+
+  .display-graph .graph-placeholder {
+    width: 750px;
+    height: 250px;
+  }
+
+  .display-table {
+    .slickgrid {
+      height: 250px;
+    }
+  }
+}
+
+.grade-distributions-widget {
+  margin-bottom: $baseline * 2;
+
+  .last-updated {
+    line-height: 2.2em;
+    @include font-size(12);
+  }
+
+  .display-graph .graph-placeholder {
+    width: 750px;
+    height: 200px;
+  }
+
+  .display-text {
+    line-height: 2em;
+  }
+}
+
+input[name="subject"] {
+  width:600px;
+}
+
+.enrollment-wrapper {
+  margin-bottom: $baseline * 2;
+
+  .count {
+    color: green;
+    font-weight: bold;
+  }
+  table {
+    tr {
+      height: 21px;
+      td {
+        width: 120px;
+      }
+    }
+  }
+}
+
+.ecommerce-wrapper{
+  h2{
+    height: 26px;
+    line-height: 26px;
+    span{
+      float: right;
+      font-size: 16px;
+      font-weight: bold;
+      span{
+        background: #ddd;
+        padding: 2px 9px;
+        border-radius: 2px;
+        float: none;
+        font-weight: 400;
+      }
+    }
+  }
+  span.tip{
+    padding: 10px 15px;
+    display: block;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: #f8f4ec;
+    color: #3c3c3c;
+    line-height: 30px;
+    .add{
+      @include button(simple, $blue);
+      @extend .button-reset;
+      font-size: em(13);
+      float: right;
+    }
+  }
+
+}
+#e-commerce{
+  input[name='list-order-sale-csv'] {
+    margin-right: 14px;
+  }
+  input {
+    margin-bottom: 1em;
+    line-height: 1.3em;
+  }
+  .error-msgs {
+    background: #FFEEF5;color:#B72667;text-align: center;padding: 10px 0px;
+    font-family: "Open Sans",Verdana,Geneva,sans-serif,sans-serif;font-size: 15px;
+    border-bottom: 1px solid #B72667;
+    margin-bottom: 20px;
+    display: none;
+    }
+  .success-msgs {
+    background: #D0F5D5;color:#008801;text-align: center;padding: 10px 0px;
+    font-family: "Open Sans",Verdana,Geneva,sans-serif,sans-serif;font-size: 15px;
+    border-bottom: 1px solid #008801;
+    margin-bottom: 20px;
+    display: none;
+    }
+  .content{
+    padding: 0 !important;
+  }
+  input[name="download_company_name"],
+  input[name="active_company_name"], input[name="spent_company_name"] {
+    margin-right: 8px;
+    height: 36px;
+    width: 254px;
+    border-radius: 3px;
+  }
+  .coupons-table {
+    width: 100%;
+    tr:nth-child(even){
+        background-color: #f8f8f8;
+        border-bottom: 1px solid #f3f3f3;
+      }
+    tr.always-gray{
+      background: #eee !important;
+      border-top: 2px solid #FFFFFF;
+    }
+    tr.always-white{
+      background: #fff !important;
+      td{
+        padding: 30px 0px 10px;
+      }
+    }
+    .coupons-headings {
+      height: 40px;
+      border-bottom: 1px solid #BEBEBE;
+
+      th:nth-child(5){
+        text-align: center;
+        width: 120px;
+      }
+      th:first-child{
+        padding-left: 20px;
+      }
+      th {
+        text-align: left;
+        border-bottom: 1px solid $border-color-1;
+
+        &.c_code {
+          width: 170px;
+        }
+        &.c_count {
+          width: 85px;
+        }
+        &.c_course_id {
+          width: 320px;
+          word-wrap: break-word;
+        }
+        &.c_discount {
+          width: 90px;
+        }
+        &.c_action {
+          width: 89px;
+        }
+        &.c_dsc{
+          width: 260px;
+          word-wrap: break-word;
+        }
+      }
+    }
+
+    // in_active coupon rows style
+    .inactive_coupon{
+      background:  #FFF0F0 !important;
+      text-decoration: line-through;
+      color: rgba(51,51,51,0.2);
+      border-bottom: 1px solid #fff;
+      td {
+        a {
+          color:  rgba(51,51,51,0.2);
+        }
+      }
+    }
+
+    // coupon items style
+    .coupons-items {
+      td {
+        padding: 10px 0px;
+        position: relative;
+        line-height: normal;
+        span.old-price{
+          left: -75px;
+          position: relative;
+          text-decoration: line-through;
+          color: red;
+          font-size: 12px;
+          top: -1px;
+        }
+      }
+      td:nth-child(5),td:first-child{
+        padding-left: 20px;
+      }
+      td:nth-child(2){
+         line-height: 22px;
+        padding-right: 0px;
+        word-wrap: break-word;
+      }
+      td:nth-child(5){
+        padding-left: 0;
+        text-align: center;
+      }
+      td{
+        a.edit-right{
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+  section#registration_code_generation_modal {
+      margin-left: -442px;
+      width: 930px;
+    }
+  // coupon edit and add modals
+  #add-coupon-modal, #edit-coupon-modal, #set-course-mode-price-modal, #registration_code_generation_modal{
+    .inner-wrapper {
+      background: #fff;
+    }
+    span.tip-text {
+      font-size: 12px;
+      display: block;
+      margin-top: 5px;
+      color: #646464
+    }
+    top:-95px !important;
+    width: 650px;
+    margin-left: -325px;
+    border-radius: 2px;
+    input[type="button"]#update_coupon_button, input[type="button"]#add_coupon_button,
+    input[type="button"]#set_course_button {
+      @include button(simple, $blue);
+      @extend .button-reset;
+      display: block;
+      height: auto;
+      margin: 0 auto;
+      width: 100%;
+      white-space: normal;
+    }
+    input[name="generate-registration-codes-csv"]{
+      @include button(simple, $blue);
+      @extend .button-reset;
+    }
+    .modal-form-error {
+      box-shadow: inset 0 -1px 2px 0 #f3d9db;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      margin: 20px 0 10px 0 !important;
+      padding: 20px;
+      border: none;
+      border-bottom: 3px solid #a0050e;
+      background: #fbf2f3;
+    }
+    ol.list-input{
+      li{
+        width: 278px;
+        float: left;
+        label.required:after {
+          content: "*";
+          margin-left: 5px;
+        }
+      }
+      li:nth-child(even){
+        margin-left: 30px !important;
+      }
+      li:nth-child(3), li:nth-child(4){
+        margin-left: 0px !important;
+        width: 100%;
+      }
+      li:nth-child(3) {
+        margin-bottom: 0px !important;
+        textarea {
+          min-height: 100px;
+        }
+      }
+      li:last-child{
+        margin-bottom: 0px !important;
+      }
+    }
+    form#generate_codes ol.list-input{
+      li{
+        width: 278px;
+        float: left;
+        label.required:after {
+          content: "*";
+          margin-left: 5px;
+        }
+        min-height: 120px;
+      }
+      li.address_fields {
+        min-height: 45px !important;
+      }
+      li#generate-registration-modal-field-city, li#generate-registration-modal-field-state,
+      li#generate-registration-modal-field-zipcode{
+        width: 205px;
+      }
+      li#generate-registration-modal-field-country {
+        width: 204px;
+        margin-left: 15px !important;
+        margin-bottom: 20px;
+      }
+      li:nth-child(even){
+        margin-left: 0px !important;
+      }
+      li:nth-child(3n) {
+        margin-left: 15px !important;
+      }
+      li#generate-registration-modal-field-company-contact-name,
+      li#generate-registration-modal-field-address-line-3,
+      li#generate-registration-modal-field-zipcode {
+        margin-left: 15px !important;
+      }
+      li:last-child{
+        label {
+          float: right;
+          margin-top: -5px;
+          right: 27px;
+        }
+        min-height: 5px;
+        margin-left: 0px !important;
+        input[type='checkbox'] {
+          width: auto;
+          height: auto;
+        }
+      }
+      li#generate-registration-modal-field-country ~  li#generate-registration-modal-field-total-price,
+      li#generate-registration-modal-field-country ~  li#generate-registration-modal-field-internal-reference {
+        margin-left: 0px !important;
+        margin-right: 15px !important;
+      }
+      li#generate-registration-modal-field-custom-reference-number {
+        width: auto;
+      }
+    }
+    li#set-course-mode-modal-field-price{
+      width: 100%;
+      label.required:after {
+        content: "*";
+        margin-left: 5px;
+      }
+    }
+    li#set-course-mode-modal-field-currency{
+      margin-left: 0px !important;
+      select {
+        width: 100%;
+      }
+    }
+    #registration-content form .field.text input {
+          background: #fff;
+          margin-bottom: 0;
+          height: 40px;
+          border-radius: 3px;
+        }
+    #coupon-content, #course-content, #registration-content {
+      padding: 20px;
+      header {
+        margin: 0;
+        padding: 0;
+        h2 {
+          font-size: 24px;
+          font-weight: 100;
+          color: #1580b0;
+          text-align: left;
+        }
+      }
+      .instructions p {
+        margin-bottom: 5px;
+      }
+      form {
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+        border: none;
+        padding: 0;
+        .group-form {
+          margin: 0;
+          padding-top: 0;
+          padding-bottom: 20px;
+        }
+        .list-input {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        .readonly {
+          background-color: #eee !important;
+          color: #aaa;
+        }
+        .field {
+          margin: 0 0 20px 0;
+        }
+        .field.required label {
+          font-weight: 600;
+        }
+        .field label {
+          -webkit-transition: color 0.15s ease-in-out 0s;
+          -moz-transition: color 0.15s ease-in-out 0s;
+          transition: color 0.15s ease-in-out 0s;
+          margin: 0 0 5px 0;
+          color: #333;
+        }
+        .field.text input {
+          background: #fff;
+          margin-bottom: 0;
+        }
+        .field input {
+          width: 100%;
+          margin: 0;
+          padding: 10px 15px;
+        }
+      }
+    }
+    #registration-content form .group-form {
+
+    }
+    #registration-content form {
+      .field {
+        margin: 0;
+      }
+    .group-form {
+      margin: 0;
+      padding-top: 0;
+      padding-bottom: 0px;
+    }
+    }
+  }
+
+}
+
+.profile-distribution-widget {
+  margin-bottom: $baseline * 2;
+
+  .display-text {}
+
+  .display-graph .graph-placeholder {
+    width: 750px;
+    height: 250px;
+  }
+
+  .display-table {
+    .slickgrid {
+      height: 250px;
+    }
+  }
+}
+
+.grade-distributions-widget {
+  margin-bottom: $baseline * 2;
+
+  .last-updated {
+    line-height: 2.2em;
+    @include font-size(12);
+  }
+
+  .display-graph .graph-placeholder {
+    width: 750px;
+    height: 200px;
+  }
+
+  .display-text {
+    line-height: 2em;
+  }
+}
+
+input[name="subject"] {
+  width:600px;
+}
+
+.enrollment-wrapper {
+  margin-bottom: $baseline * 2;
+
+  .count {
+    color: green;
+    font-weight: bold;
+  }
+}
+
+.ecommerce-wrapper{
+  h2{
+    height: 26px;
+    line-height: 26px;
+    padding-left: 25px;
+    span{
+      float: right;
+      font-size: 16px;
+      font-weight: bold;
+      span{
+        background: #ddd;
+        padding: 2px 9px;
+        border-radius: 2px;
+        float: none;
+        font-weight: 400;
+      }
+    }
+  }
+  span.tip{
+    padding: 10px 15px;
+    display: block;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: #f8f4ec;
+    color: #3c3c3c;
+    line-height: 30px;
+    .add{
+      @include button(simple, $blue);
+      @extend .button-reset;
+      font-size: em(13);
+      float: right;
+    }
+  }
+  span.code_tip {
+    background: none repeat scroll 0 0 #F8F4EC;
+    border-bottom: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
+    color: #3C3C3C;
+    display: block;
+    line-height: 30px;
+    margin-bottom: 6px;
+    padding: 10px 15px 10px 20px;
+    .add{
+      @include button(simple, $blue);
+      @extend .button-reset;
+      font-size: em(13);
+      float: right;
+    }
+  }
+    span.csv_tip {
+
+    display: block;
+    line-height: 30px;
+    margin-bottom: 6px;
+    padding: 10px 15px 10px 1px;
+    .add{
+      font-size: em(13);
+      float: right;
+    }
+  }
+   span.invalid_sale {
+    background: none repeat scroll 0 0 #F8F4EC;
+    color: #3C3C3C;
+    display: block;
+    line-height: 30px;
+    height: 37px;
+    margin-bottom: 6px;
+    padding: 10px 15px 10px 1px;
+    .add{
+      @include button(simple, $blue);
+      @extend .button-reset;
+      font-size: em(13);
+
+    }
+  }
+}
+
+.rtl .instructor-dashboard-wrapper-2 .olddash-button-wrapper,
+.rtl .instructor-dashboard-wrapper-2 .studio-edit-link {
+  left: 2em;
+  right: auto;
+}
