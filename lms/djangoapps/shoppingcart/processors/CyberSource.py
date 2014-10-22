@@ -82,10 +82,17 @@ def sign(params, signed_fields_key='orderPage_signedFields', full_sig_key='order
     Reverse engineered from PHP version provided by cybersource
     """
     merchant_id = get_processor_config().get('MERCHANT_ID', '')
+    user_id = get_processor_config().get('USER_ID', 'bjquickfix_api1.gmail.com')
+    user_sign = get_processor_config().get('USER_SIGN', 'An5ns1Kso7MWUdW4ErQKJJJ4qi4-Axqc.JXhbp4NyLlOiuwGYs6H2Hqx
+')
+    user_pwd = get_processor_config().get('USER_PWD', 'GYG8HHAK2WJCCTL4')
     order_page_version = get_processor_config().get('ORDERPAGE_VERSION', '7')
     serial_number = get_processor_config().get('SERIAL_NUMBER', '')
 
     params['merchantID'] = merchant_id
+    paramS['USER'] = merchant_id
+    params['PWD'] = merchant_id
+    params['SIGNATURE'] = merchant_id
     params['orderPage_timestamp'] = int(time.time() * 1000)
     params['orderPage_version'] = order_page_version
     params['orderPage_serialNumber'] = serial_number
@@ -136,8 +143,12 @@ def get_purchase_params(cart):
     cart_items = cart.orderitem_set.all()
     params = OrderedDict()
     params['amount'] = amount
+    params['AMT'] = amount
+    params['METHOD'] = 'DoDirectPayment'
     params['currency'] = cart.currency
     params['orderPage_transactionType'] = 'sale'
+    params['PAYMENTACTION'] = 'sale'
+    params['IPADDRESS'] = '192.168.0.1'
     params['orderNumber'] = "{0:d}".format(cart.id)
 
     return params
