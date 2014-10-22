@@ -83,16 +83,15 @@ def sign(params, signed_fields_key='orderPage_signedFields', full_sig_key='order
     """
     merchant_id = get_processor_config().get('MERCHANT_ID', '')
     user_id = get_processor_config().get('USER_ID', 'bjquickfix_api1.gmail.com')
-    user_sign = get_processor_config().get('USER_SIGN', 'An5ns1Kso7MWUdW4ErQKJJJ4qi4-Axqc.JXhbp4NyLlOiuwGYs6H2Hqx
-')
+    user_sign = get_processor_config().get('USER_SIGN', 'An5ns1Kso7MWUdW4ErQKJJJ4qi4-Axqc.JXhbp4NyLlOiuwGYs6H2Hqx')
     user_pwd = get_processor_config().get('USER_PWD', 'GYG8HHAK2WJCCTL4')
     order_page_version = get_processor_config().get('ORDERPAGE_VERSION', '7')
     serial_number = get_processor_config().get('SERIAL_NUMBER', '')
 
     params['merchantID'] = merchant_id
-    paramS['USER'] = merchant_id
-    params['PWD'] = merchant_id
-    params['SIGNATURE'] = merchant_id
+    paramS['USER'] = user_id
+    params['PWD'] = user_pwd
+    params['SIGNATURE'] = user_sign
     params['orderPage_timestamp'] = int(time.time() * 1000)
     params['orderPage_version'] = order_page_version
     params['orderPage_serialNumber'] = serial_number
